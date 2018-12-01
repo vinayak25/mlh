@@ -39,30 +39,13 @@
     </div>
     </nav>
 
-    <div class="card m-2">
-        <div class="card-body">
-            <h5 class="card-title">Welcome, {{user.username}}</h5>
-            <p class="card-text">Here you can explore super cool events and hackathons.</p>
-        </div>
-    </div>
+    <div class="jumbotron">
+  <h1 class="display-4">Oops!</h1>
+  <p class="lead">You currently don't have the permission to create new tech events or hackathons.</p>
+  <hr class="my-4">
+  <p>If you feel this shouldn't have happened, please write to us at test@test.com</p>
+</div>
 
-    {% for event in events %}
-        <div class="card m-3">
-            <div class="card-header">
-                {% if event.type == 1 %}
-                    Technial Event
-                {% else %}
-                    Hackathon
-                {% endif %}
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ event.name }}</h5>
-                <p class="card-text">{{ event.description }}</p>
-                <p class="card-text">{{ event.user.username }}</p>
-                <a href="{% url 'attend-event' event.id %}" class="btn btn-primary">Attend</a>
-            </div>
-        </div>
-    {% endfor %}
   </main>
 </body>
 </html>
