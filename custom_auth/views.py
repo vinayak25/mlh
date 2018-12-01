@@ -16,7 +16,7 @@ def login_view(request):
                 login(request, user)
                 return render(request, 'profile.html')
             else:
-                return redirect('/register/')
+                return redirect('/attendee-register/')
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form':form})
