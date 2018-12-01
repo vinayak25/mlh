@@ -10,7 +10,6 @@ class Role(models.Model):
 
 class PermissionRole(models.Model):
     role = models.ManyToManyField("Role")
-    permission = models.ManyToManyField("Permission", verbose_name=_(""))
     def __str__(self):
         return self.name
 
