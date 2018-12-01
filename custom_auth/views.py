@@ -34,11 +34,7 @@ def register_user(request, user_type):
             password = form.cleaned_data['password']
             user = User.objects.create_user(
                 username=username, password=password)
-<<<<<<< HEAD
             user.role_set.add(Role.objects.get(id=user_type))
-=======
-            user.role_set.add(Role.objects.get(id=2))
->>>>>>> 10db946dff68029811642a825d2f6e2734f22522
             return redirect("/")
     form = RegisterForm()
     return render(request, 'register.html', {'form': form})
