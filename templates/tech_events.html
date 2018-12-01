@@ -45,7 +45,6 @@
             <p class="card-text">Here you can explore super cool events and hackathons.</p>
         </div>
     </div>
-
     {% for event in events %}
         <div class="card m-3">
             <div class="card-header">
@@ -59,7 +58,16 @@
                 <h5 class="card-title">{{ event.name }}</h5>
                 <p class="card-text">{{ event.description }}</p>
                 <p class="card-text">{{ event.user.username }}</p>
+                <p class="card-text"><strong>Attendees: </strong>&nbsp;
+                    {% for attendee in event.attendee.all() %}
+                        {{ attendee.username }}
+                    {% endfor %}
+                    ,
+                </p>
                 <a href="{% url 'attend-event' event.id %}" class="btn btn-primary">Attend</a>
+                {% if user.role_set.filter(id=3) %}
+                <a href="{% url 'sponsor-event' event.id %}" class="btn btn-primary">Sponsor</a>
+                {% endif%}
             </div>
         </div>
     {% endfor %}

@@ -12,13 +12,13 @@
 </head>
 
 <body>
-    <main>
-        <div class='row'>
-            <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
-            <a class="btn btn-primary" href="{% url 'register_attendee' %}">Register as Attendee</a>
-            <a class="btn btn-primary" href="{% url 'register_organiser' %}">Register as Organiser</a>
-            <a class="btn btn-primary" href="{% url 'register_sponsor' %}">Register as Sponsor</a>
-        </div>
+    <main> 
+            <div class="m-5">
+            <p><a class="btn btn-primary" href="{% url 'login' %}">Login</a></p>
+            <p><a class="btn btn-primary" href="{% url 'register_attendee' %}">Register as Attendee</a></p>
+            <p><a class="btn btn-primary" href="{% url 'register_organiser' %}">Register as Organiser</a></p>
+            <p><a class="btn btn-primary" href="{% url 'register_sponsor' %}">Register as Sponsor</a></p>
+            </div>
     </main>
 </body>
 

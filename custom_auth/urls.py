@@ -11,4 +11,5 @@ urlpatterns = [
     path('sponsor-register/', views.register_view_sponsor,
          name="register_sponsor"),
     path('profile/', views.profile, name="profile"),
+    path('logout/', views.logout_view, name='logout'),
 ]

@@ -10,7 +10,7 @@ class Event(models.Model):
     description = models.CharField(max_length=512)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='creator')
     attendee = models.ManyToManyField(User, related_name='attendee')
-
+    sponsors = models.ManyToManyField(User, related_name='sponsor')
     def __str__(self):
         return self.name
 

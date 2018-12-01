@@ -69,3 +69,10 @@ def get_tech_events(request):
 def get_hackathons(request):
     events = Event.objects.filter(type=2)
     return render(request, 'profile.html', { 'user': request.user, 'events': events })
+
+@login_required(login_url='/custom_auth/login')
+def sponsor_event(request, event_id):
+    user = request.user
+    event = get_object_or_404(Event, pk=event_id)
+    event.sponsor.add(user)
+    return redirect('http://127.0.0.1:8000/custom_auth/profile/')
