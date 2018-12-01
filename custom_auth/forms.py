@@ -9,7 +9,7 @@ class LoginForm(forms.Form):
             "password" : forms.PasswordInput()
         }
 
-class RegisterForm(form.Forms):
+class RegisterForm(forms.Form):
     username = forms.CharField(max_length=255, required=True)
     password = forms.CharField(max_length=255, required=True)
     confirm_password = forms.CharField(max_length=255,required=True)
