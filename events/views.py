@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from events.forms import EventForm
 from events.models import Event
 from django.contrib.auth.decorators import login_required
