@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from custom_auth.models import Role
 from django.contrib.auth.decorators import login_required
-
+from events.models import Event
 
 def login_view(request):
     if request.method == 'POST':
@@ -33,10 +33,12 @@ def register_view_attendee(request):
             password = form.cleaned_data['password']
             user = User.objects.create_user(
                 username=username, password=password)
+            user.role_set.add(ROle.objects.get(id=2))
             return redirect("/")
     form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
 @login_required(login_url='/custom_auth/login')
 def profile(request):
-    return render(request, 'profile.html', { 'user': request.user })
+    events = Event.objects.all()
+    return render(request, 'profile.html', { 'user': request.user, 'events': events })
