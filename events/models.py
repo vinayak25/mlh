@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Event(models.Model):
     name = models.CharField(max_length=255)
-    type = models.IntegerField()
+    type = models.IntegerField(null = True)
     date = models.DateField("Date", default=datetime.date.today)
     description = models.CharField(max_length=512)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
