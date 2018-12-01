@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from events.forms import EventForm
 from events.models import Event
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import get_object_or_404
 
 @login_required(login_url='/custom_auth/login')
 def create_tech_event(request):
@@ -44,3 +44,11 @@ def create_hack_event(request):
     else:
         form = EventForm()
         return render(request, "new_event.html", {'form': form})
+
+@login_required(login_url='/custom_auth/login')
+def mark_event_attendee(request, event_id):
+    user = request.user
+    event = get_object_or_404(Event, pk=event_id)
+    
+    event.attendee.add(user)
+    return redirect('http://127.0.0.1:8000/custom_auth/profile/')

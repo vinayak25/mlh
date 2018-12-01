@@ -27,7 +27,13 @@
             <a class="nav-link" href="#">Hackathons</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="{% url 'new_tech_event' %}">New Tech Event</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'new_hack_event' %}">New Hack Event</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
         </ul>
     </div>
@@ -53,6 +59,7 @@
                 <h5 class="card-title">{{ event.name }}</h5>
                 <p class="card-text">{{ event.description }}</p>
                 <p class="card-text">{{ event.user.username }}</p>
+                <a href="{% url 'attend-event' event.id %}" class="btn btn-primary">Attend</a>
             </div>
         </div>
     {% endfor %}
