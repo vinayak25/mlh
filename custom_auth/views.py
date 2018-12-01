@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from custom_auth.forms import LoginForm, RegisterForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from custom_auth.models import Role
 from django.contrib.auth.decorators import login_required
@@ -55,4 +55,9 @@ def register_view_sponsor(request):
 @login_required(login_url='/custom_auth/login')
 def profile(request):
     events = Event.objects.all()
-    return render(request, 'profile.html', {'user': request.user, 'events': events})
+    return render(request, 'profile.html', { 'user': request.user, 'events': events })
+
+@login_required(login_url='/custom_auth/login')
+def logout_view(request):
+    logout(request)
+    return redirect('http://127.0.0.1:8000/custom_auth/login/')
