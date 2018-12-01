@@ -31,7 +31,6 @@ def register_view_attendee(request):
             password = form.cleaned_data['password']
             user = User.objects.create_user(
                 username=username, password=password)
-            user.roles.add(Role.objects.get(id=3))
             return redirect("/")
     form = RegisterForm()
     return render(request, 'register.html', {'form': form})
