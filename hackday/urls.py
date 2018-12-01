@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from hackday import views
 
 urlpatterns = [
+    path("", views.root, name="home"),
     path('admin/', admin.site.urls),
     path('custom_auth/', include('custom_auth.urls')),
     path('events/', include('events.urls')),
